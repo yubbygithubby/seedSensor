@@ -1,0 +1,33 @@
+from flask import Flask, jsonify, render_template, request
+from connectSense import *
+
+app = Flask(__name__, template_folder="templates")
+
+connected = False
+
+@app.route('/_stuff', methods = ['GET'])
+def stuff():
+    #return jsonify(result = receiveData())
+    if connected:
+        return jsonify(result = receiveData())
+    return jsonify(result = testData())
+
+@app.route('/')
+def first_function():
+   return render_template('index.html')
+
+
+@app.route('/displayData')
+def displayData():
+    try:
+         connectESP32()
+         connected = True
+    except:
+        pass
+
+    return render_template('dataDisplay.html')
+
+
+if __name__ == "__main__":
+  #app.run(host='192.168.0.44', debug=True)
+  app.run(debug=True)
