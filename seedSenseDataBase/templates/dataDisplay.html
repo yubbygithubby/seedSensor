@@ -168,7 +168,8 @@
           return response.json()
         })
         .then(data => {
-          connected = data;
+
+          connected = data.isConnected;
           console.log(data)
           console.log(connected)
         })
