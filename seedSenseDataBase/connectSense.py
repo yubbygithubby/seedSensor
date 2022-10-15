@@ -8,16 +8,19 @@ import time
 esp32Address = "10:97:BD:0A:29:EE"
 port = 1
 connection = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
-
+currentData = 'OFF'
 def connectESP32():
     connection.connect((esp32Address, port))
 
 def receiveData():
     data = connection.recv(115200)
-    if data == '1':
+    if data == '0':
+        currentData = 'OFF'
         return 'OFF'
-    elif data == '0':
+    elif data == '1':
+        currentData = 'SENSED'
         return 'SENSED'
+    return currentData
 
 def testData():
     currentTime = int(time.time())
