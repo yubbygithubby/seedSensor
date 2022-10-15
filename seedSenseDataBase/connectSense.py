@@ -1,6 +1,5 @@
 #this is the program used to connect to the esp32 and send the data to adafruit
 import socket
-from sqlite3 import connect
 import time
 
 #bluetooth connection
