@@ -14,9 +14,10 @@ def connectESP32():
 
 def receiveData():
     data = connection.recv(115200)
-    if data != '1':
+    if data == '1':
         return 'OFF'
-    return 'SENSED'
+    elif data == '0':
+        return 'SENSED'
 
 def testData():
     currentTime = int(time.time())
@@ -28,4 +29,3 @@ def testData():
 
 def disconnectESP32():
     connection.close()
-
