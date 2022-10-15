@@ -20,9 +20,13 @@ def first_function():
 @app.route('/_connect', methods = ['GET'])
 def connect():
     try:
-        connectESP32()
-        connected = True
-        return jsonify(isConnected = 'true')
+        if connected == False:
+            connectESP32()
+            connected = True
+            return jsonify(isConnected = 'true')
+        else:
+            pass
+        
 
     except:
         return jsonify(isConnected = 'false')
@@ -39,5 +43,5 @@ def displayData():
 
 
 if __name__ == "__main__":
-  app.run(host='192.168.0.163', debug=True)
-  #app.run(debug=True)
+  #app.run(host='192.168.0.163', debug=True)
+  app.run(debug=True)
