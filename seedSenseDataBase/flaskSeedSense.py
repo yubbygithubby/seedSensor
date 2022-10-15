@@ -1,3 +1,4 @@
+from operator import truediv
 from flask import Flask, jsonify, render_template, request
 from connectSense import *
 
@@ -16,7 +17,16 @@ def stuff():
 def first_function():
    return render_template('index.html')
 
+@app.route('/_connect', methods = ['GET'])
+def connect():
+    try:
+        connectESP32()
+        connected = True
+        return jsonify(isConnected = 'true')
 
+    except:
+        return jsonify(isConnected = 'false')
+        
 @app.route('/displayData')
 def displayData():
     try:
@@ -29,5 +39,5 @@ def displayData():
 
 
 if __name__ == "__main__":
-  #app.run(host='192.168.0.44', debug=True)
-  app.run(debug=True)
+  app.run(host='192.168.0.163', debug=True)
+  #app.run(debug=True)
