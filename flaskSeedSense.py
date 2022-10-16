@@ -4,6 +4,8 @@ from connectSense import *
 
 app = Flask(__name__, template_folder="templates")
 
+ip = "192.168.0.44"
+
 connected = False
 
 currentData = 'OFF'
@@ -45,5 +47,5 @@ def displayData():
 
 
 if __name__ == "__main__":
-  #app.run(host='192.168.0.163', debug=True)
+  #app.run(host=ip, debug=True)
   app.run(debug=True)

@@ -13,7 +13,8 @@ def connectESP32():
     connection.connect((esp32Address, port))
 
 def receiveData(currentData):
-    data = connection.recv(115200)
+    data = connection.recv(115200).decode(ascii)
+    print(data)
     if data == '0':
         currentData = 'OFF'
         return 'OFF'
