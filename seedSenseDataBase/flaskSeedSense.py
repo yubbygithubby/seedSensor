@@ -25,7 +25,8 @@ def connect():
             connected = True
             return jsonify(isConnected = 'true')
         else:
-            pass
+            return jsonify(isConnected = 'true')
+
         
 
     except:
