@@ -12,7 +12,7 @@
   </head>
   <body >
 
-    <h1>HERE</h1>
+    <h1>Seed Sensor Graph</h1>
 
   <div class="alert alert-primary alert-dismissible fade show" role="alert" id="tryconnect">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -49,12 +49,12 @@
 
 
 <script type=text/javascript>
-  $SCRIPT_ROOT = "http://192.168.0.163:5000/_stuff";
+  $SCRIPT_ROOT = "http://172.19.61.109:5000/_stuff";
 
 </script>
 
 <script type="text/javascript">
-      var setInterval = setInterval(update_values,800);
+      var setInterval = setInterval(update_values,400);
        
       var intervalID;
     
@@ -127,7 +127,7 @@
         $("#connected").hide();
 
       async function request(){
-        await fetch("http://192.168.0.163:5000/_stuff")
+        await fetch("http://172.19.61.109:5000/_stuff")
         .then(response => {
           // indicates whether the response is successful (status code 200-299) or not
           if (!response.ok) {
@@ -212,7 +212,7 @@
       //sends a get request to flask which returns whether or not the device is connected. 
       //if it is connected it will display the alert connected
       function isConnected(){
-        fetch("http://192.168.0.163:5000/_connect")
+        fetch("http://172.19.61.109:5000/_connect")
         .then(response => {
           // indicates whether the response is successful (status code 200-299) or not
           if (!response.ok) {

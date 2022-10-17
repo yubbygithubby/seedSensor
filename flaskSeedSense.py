@@ -9,7 +9,7 @@ app = Flask(__name__, template_folder="templates")
 global ip
 global connected
 
-ip = "192.168.0.163"
+ip = "172.19.61.109"
 
 connected = False
 
