@@ -1,6 +1,7 @@
 #this is the program used to connect to the esp32 and send the data to adafruit
 import socket
 import time
+import sys
 
 #bluetooth connection
 #The address of the esp32
@@ -13,14 +14,14 @@ def connectESP32():
     connection.connect((esp32Address, port))
 
 def receiveData(currentData):
-    data = connection.recv(115200).decode(ascii)
-    print(data)
-    if data == '0':
-        currentData = 'OFF'
-        return 'OFF'
-    elif data == '1':
+    data = connection.recv(115200).decode('ascii')
+    print(data, file=sys.stdout)
+    if '1' in data:
         currentData = 'SENSED'
         return 'SENSED'
+    elif '0' in data:
+        currentData = 'OFF'
+        return 'OFF'
     return currentData
 
 def testData():
